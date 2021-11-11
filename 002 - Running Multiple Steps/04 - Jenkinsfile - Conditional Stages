@@ -4,6 +4,26 @@ pipeline {
 			image 'alpine:latest' 
 		}
 	}
+	parameters {
+		choice(name: 'BUILD_TYPE', choices: ['build', 'test'], description: 'which stage do you want to execute')
+	}
     stages {
+    	stage('build') {
+		when {
+			parameters name: 'BUILD_TYPE', value: 'build'
+		}
+		steps {
+			sh "echo 'building'"
+		}
+	}
+	
+    	stage('build') {
+		when {
+			parameters name: 'BUILD_TYPE', value: 'test'
+		}
+		steps {
+			sh "echo 'testing'"
+		}
+	}
     }
 }
