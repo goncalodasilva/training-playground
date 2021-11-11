@@ -8,7 +8,7 @@ pipeline {
 		choice(name: 'BUILD_TYPE', choices: ['build', 'test'], description: 'which stage do you want to execute')
 	}
     stages {
-    	stage('build') {
+    	stage('execute_build') {
 		when {
 			parameters name: 'BUILD_TYPE', value: 'build'
 		}
@@ -17,7 +17,7 @@ pipeline {
 		}
 	}
 	
-    	stage('build') {
+    	stage('execute_test') {
 		when {
 			parameters name: 'BUILD_TYPE', value: 'test'
 		}
