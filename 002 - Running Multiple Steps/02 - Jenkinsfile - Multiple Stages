@@ -5,5 +5,15 @@ pipeline {
 		}
 	}
     stages {
+    	stage ('build') {
+		steps {
+			sh 'date >> system_date.txt'
+		}
+	}
+	stage('last') {
+		steps {
+			sh grep ./system_date.txt '2019'
+		}
+	}
     }
 }
