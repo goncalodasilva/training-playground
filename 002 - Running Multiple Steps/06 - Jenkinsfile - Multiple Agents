@@ -3,13 +3,13 @@ pipeline {
     
     stages {
     	stage('maven') {
-		agent { docker { image 'maven:latest' } }
+		agent { docker maven:latest }
 		steps {
 			mvn --version
 		}
 	}
 	stage('node') {
-		agent { docker { image 'node:latest' } }
+		agent { docker node:latest }
 		steps {
 			npm --version
 		}
