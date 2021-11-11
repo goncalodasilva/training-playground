@@ -5,5 +5,18 @@ pipeline {
 		}
 	}
     stages {
+    	stage('build') {
+		steps {
+			script {
+				createAndPrintDate('primeiro')
+				sh 'sleep 10s'
+				createAndPrintDate('segundo')
+			}
+		}	
+	}
     }
 }
+ def createAndPrintDate(nome = '') {
+ 	sh "date >> $nome"
+	sh "cat nome"
+ }
