@@ -9,9 +9,9 @@ pipeline {
             steps {
 	    
 	    	configFileProvider([configFile(fileId: "settings.xml", targetLocation: 'settings-copy.xml')]) {
-			
+			sh "mvn -f '005 - Recording Test Results and Artifacts/02 - Java Unit Tests' -s 'settings-copy.xml' clean install"
 		}
-                sh "mvn -f '005 - Recording Test Results and Artifacts/02 - Java Unit Tests' -s 'settings-copy.xml' clean install"
+                
             }
         }
     }
