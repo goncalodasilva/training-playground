@@ -21,9 +21,9 @@ environment {
                 script {
                 	def buildConfigs = readJSON text: "$BUILD_CONFIGS"
                 	buildConfigs.each{ buildConfig ->
-				stage($buildConfig.name) {
+				stage(buildConfig.name) {
 					steps {
-						sh $buildConfig.command	
+						sh "buildConfig.command"	
 					}
 				}
                 		
