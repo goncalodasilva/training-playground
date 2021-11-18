@@ -11,7 +11,7 @@ pipeline {
 	    
 	    	configFileProvider([configFile(fileId: "settings.xml", targetLocation: 'settings-copy.xml')]) {
 			sh "mvn clean install \
-			-f '005 - Recording Test Results and Artifacts/03 - Sonar Integration' \
+			-f '005 - Recording Test Results and Artifacts/Java Application' \
 			-s 'settings-copy.xml' \
 			org.sonarsource.scanner.maven:sonar-maven-plugin:3.6.0.1398:sonar \
 			-Dsonar.host.url='http://sonarqube:9000' \
