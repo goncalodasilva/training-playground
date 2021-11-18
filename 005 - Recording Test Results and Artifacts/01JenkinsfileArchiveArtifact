@@ -1,8 +1,8 @@
 pipeline {
   agent {
     dockerfile {
-      filename: '03 - Dockerfile - Install Software Dockerfile'
-      dir: '003 - Defining Execution Environments'
+      filename '03 - Dockerfile - Install Software Dockerfile'
+      dir '003 - Defining Execution Environments'
     }
   }
   stages {
