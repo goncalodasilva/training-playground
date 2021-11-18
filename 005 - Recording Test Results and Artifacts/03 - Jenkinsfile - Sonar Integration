@@ -1,13 +1,19 @@
 pipeline {
     agent { 
 		docker { 
-			image 'alpine:latest' 
+			image 'maven:latest' 
 		}
 	}
     stages {
         stage('tests') {
             steps {
-                sh ""
+	    
+	    	configFileProvider([configFile(fileId: "settings.xml", targetLocation: 'settings-copy.xml')]) {
+			sh "mvn -f '005 - Recording Test Results and Artifacts/02 - Java Unit Tests' -s 'settings-copy.xml' clean install \
+			org.sonarsource.scanner.maven:sonar-maven-plugin:3.6.0.1398:sonar" -Dsonar.host.url='http://sonarqube:9000' \
+			-Dsonar.projectKey='123' -Dsonar.projectName='batatas'"
+		}
+                
             }
         }
     }
