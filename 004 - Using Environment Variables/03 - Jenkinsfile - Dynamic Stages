@@ -23,7 +23,7 @@ environment {
                 	buildConfigs.each{ buildConfig ->
 				stage($buildConfig.name) {
 					steps {
-						sh "echo $buildConfig.command"	
+						sh $buildConfig.command	
 					}
 				}
                 		
