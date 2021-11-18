@@ -6,6 +6,7 @@ pipeline {
 		label 'test docker'
 		
 	}
+	}
     stages {
         stage('build') {
             steps {
