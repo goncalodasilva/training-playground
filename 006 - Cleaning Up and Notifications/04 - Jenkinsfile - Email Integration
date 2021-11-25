@@ -7,7 +7,7 @@ pipeline {
     stages {
         stage('Email')
         {
-		emailext body: 'sdcccsdcscscddsc', 
+		emailext body: 'MEssage of the emailcddcececfe dfcfec fcec', 
             		subject: 'cdscdscsdcs, 
             		to: 'goncalo.marques.silva@celfocus.com'
         }
