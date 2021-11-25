@@ -1,14 +1,28 @@
 pipeline {
     agent { 
 		docker { 
-			image 'alpine:latest' 
+			image 'maven:3.3.3'
+			args '--network training-playground'
 		}
 	}
     stages {
-        stage('tests') {
+        stage('build') {
             steps {
-                sh ""
-            }
-        }
+	    	configFileProvider([configFile(fileId: "settings.xml", targetLocation: 'settings-copy.xml')]) {
+			sh "mvn clean install \
+			-f '005 - Recording Test Results and Artifacts/04 - Publish in Nexus' \
+			-s settings-copy.xml"
+		}
+		}
+        }/*
+	stage('publish') {
+		steps {
+			sh "mvn deploy:deploy-file \
+			-s settiing-copy.xml \
+			-Durl=http://http://nexus:8081/ \
+			-DrepositoryId='http://nexus:8081/repository/maven-releases/' \
+			-Dfile
+		}
+	}*/
     }
 }
