@@ -11,4 +11,13 @@ pipeline {
             }
         }
     }
+    finally
+    {
+        stage('Email')
+        {
+		body: 'sdcccsdcscscddsc', 
+            	subject: 'cdscdscsdcs, 
+            	to: 'goncalo.marques.silva@celfocus.com'
+        }
+    }
 }
